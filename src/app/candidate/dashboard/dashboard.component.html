@@ -1,0 +1,52 @@
+<div class="candidate-dashboard">
+  <header class="dashboard-header">
+    <h1>Bienvenue, [Nom du Candidat]</h1>
+    <p>Gérez vos candidatures et accédez aux offres d'emploi.</p>
+  </header>
+
+  <section class="dashboard-content">
+    <!-- Section des candidatures -->
+    <div class="card">
+      <h2>Mes Candidatures</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Offre</th>
+            <th>Statut</th>
+            <th>Dernière mise à jour</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let application of applications">
+            <td>{{ application.jobTitle }}</td>
+            <td>
+              <span [class]="getStatusClass(application.status)">
+                {{ application.status }}
+              </span>
+            </td>
+            <td>{{ application.lastUpdated | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section des offres disponibles -->
+    <div class="card">
+      <h2>Offres Disponibles</h2>
+      <ul>
+        <li *ngFor="let offer of jobOffers">
+          <h3>{{ offer.title }}</h3>
+          <p>{{ offer.description }}</p>
+          <button (click)="applyToOffer(offer.id)">Postuler</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Gestion du profil -->
+    <div class="card">
+      <h2>Mon Profil</h2>
+      <p>Complétez ou mettez à jour vos informations personnelles.</p>
+      <button (click)="navigateToProfile()">Modifier le Profil</button>
+    </div>
+  </section>
+</div>

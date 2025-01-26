@@ -1,0 +1,31 @@
+<div class="recovery-container">
+  <h2>Réinitialisation de mot de passe</h2>
+  <form [formGroup]="recoveryForm" (ngSubmit)="onReset()">
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Entrez votre adresse email"
+        class="form-control"
+      />
+      <div *ngIf="recoveryForm.get('email')?.invalid && recoveryForm.get('email')?.touched" class="error">
+        <small *ngIf="recoveryForm.get('email')?.errors?.['required']">L'email est requis.</small>
+        <small *ngIf="recoveryForm.get('email')?.errors?.['email']">L'email n'est pas valide.</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="recoveryForm.invalid">Envoyer</button>
+  </form>
+
+  <!-- Message de succès -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</div>

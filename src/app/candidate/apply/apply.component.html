@@ -1,0 +1,12 @@
+<div class="apply-form">
+  <h1>Postuler à une Annonce</h1>
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+    <label for="title">Titre</label>
+    <input id="title" formControlName="title" />
+    <label for="cv">CV</label>
+    <input id="cv" type="file" formControlName="cv" />
+    <label for="motivationLetter">Lettre de Motivation</label>
+    <input id="motivationLetter" type="file" formControlName="motivationLetter" />
+    <button type="submit">Soumettre</button>
+  </form>
+</div>

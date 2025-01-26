@@ -1,0 +1,42 @@
+<div class="connexion-container">
+  <h2>Connexion</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Entrez votre email"
+        class="form-control"
+      />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email est requis.</small>
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">Email invalide.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe :</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Entrez votre mot de passe"
+        class="form-control"
+      />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Mot de passe est requis.</small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+          Mot de passe doit avoir au moins 6 caractères.
+        </small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Se connecter</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</div>

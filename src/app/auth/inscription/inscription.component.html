@@ -1,0 +1,83 @@
+<div class="inscription-container">
+  <h2>Inscription</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      <label for="firstName">Prénom :</label>
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        class="form-control"
+        placeholder="Entrez votre prénom"
+      />
+      <div *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched" class="error">
+        <small *ngIf="registrationForm.get('firstName')?.errors?.['required']">Le prénom est requis.</small>
+        <small *ngIf="registrationForm.get('firstName')?.errors?.['minlength']">Le prénom doit contenir au moins 2 caractères.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Nom :</label>
+      <input
+        id="lastName"
+        type="text"
+        formControlName="lastName"
+        class="form-control"
+        placeholder="Entrez votre nom"
+      />
+      <div *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched" class="error">
+        <small *ngIf="registrationForm.get('lastName')?.errors?.['required']">Le nom est requis.</small>
+        <small *ngIf="registrationForm.get('lastName')?.errors?.['minlength']">Le nom doit contenir au moins 2 caractères.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Téléphone :</label>
+      <input
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        class="form-control"
+        placeholder="Entrez votre numéro de téléphone"
+      />
+      <div *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched" class="error">
+        <small *ngIf="registrationForm.get('phone')?.errors?.['required']">Le téléphone est requis.</small>
+        <small *ngIf="registrationForm.get('phone')?.errors?.['pattern']">Numéro de téléphone invalide.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Entrez votre email"
+      />
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="error">
+        <small *ngIf="registrationForm.get('email')?.errors?.['required']">L'email est requis.</small>
+        <small *ngIf="registrationForm.get('email')?.errors?.['email']">Email invalide.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmEmail">Confirmez l'Email :</label>
+      <input
+        id="confirmEmail"
+        type="email"
+        formControlName="confirmEmail"
+        class="form-control"
+        placeholder="Confirmez votre email"
+      />
+      <div *ngIf="registrationForm.get('confirmEmail')?.invalid && registrationForm.get('confirmEmail')?.touched" class="error">
+        <small *ngIf="registrationForm.get('confirmEmail')?.errors?.['required']">La confirmation de l'email est requise.</small>
+        <small *ngIf="registrationForm.get('confirmEmail')?.errors?.['email']">Email invalide.</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">S'inscrire</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+</div>

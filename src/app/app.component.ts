@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterModule], // Import nécessaire pour la gestion des routes
+  template: `
+    <div >
+      <header>
+  
+      </header>
+      <main>
+        <router-outlet></router-outlet> <!-- Affiche les composants selon la route -->
+      </main>
+      <footer>
+        
+      </footer>
+    </div>
+  `,
+  
 })
-export class AppComponent {
-  title = 'tutor-recruitment';
-}
+export class AppComponent {}
