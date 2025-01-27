@@ -3,26 +3,40 @@
     <img src="assets/Logo_UN.png" alt="Logo UN-CHK">
   </div>
   <ul class="navbar-links">
-    <li><a routerLink="">Accueil</a></li>
-    <li><a href="https://www.unchk.sn/" target="_blank">À propos</a></li>
-    <li><a routerLink="contact">Contact</a></li>
-    <li><a routerLink="connexion">Se connecter</a></li>
-    <li><a routerLink="inscription">S'inscrire</a></li>
+    <li><a routerLink="">Home</a></li>
+    <li><a href="https://www.unchk.sn/" target="_blank">About us</a></li>
+    <li><a href="#contact">Contact</a></li> 
+    <li><a routerLink="connexion">Login</a></li>
+    <li><a routerLink="inscription">Register</a></li>
   </ul>
 </header>
 
 <section id="hero" class="hero">
   <div class="hero-content">
-    <h1>Bienvenue sur la Plateforme de Recrutement des tuteurs de l'UN-CHK</h1>
-    <button class="btn-primary" (click)="voirDetails()">Voir les détails de l'annonce</button>
+    <h1>Welcome to the UN-CHK Tutor Recruitment Platform</h1>
+  </div>
+</section>
+
+<section id="recruitment-campaigns" class="recruitment-campaigns">
+  <h3>Call for Applications for the Recruitment of Tutors for the 2024-2025 Academic Year</h3>
+  <div class="campaign">
+    <h4>Master degree programm in Big Data</h4>
+    <p><strong>Required Level :</strong> Doctorat</p>
+    <p>
+      <strong>End date :</strong>
+      <span class="date-cloture">05/04/2025</span>
+    </p>
+    <button class="btn-primary" (click)="voirDetails()">See details</button>
+    <button class="btn-secondary" (click)="postuler()">Apply now</button>
   </div>
 </section>
 
 <section id="contact" class="contact">
-  <h2>Contactez-nous</h2>
-  <p>Pour toute information, n'hésitez pas à nous contacter.</p>
+  <h2>Contact-us</h2>
+  <p><strong>Mobile :</strong> +221 30 108 41 53</p>
+  <p><strong>Email :</strong> <a href="mailto:contact@unchk.edu.sn">contactunchk.edu.sn</a></p>
 </section>
 
 <footer class="footer">
-  <p>&copy; 2025 Université Numérique Cheikh Hamidou KANE. Tous droits réservés.</p>
+  <p>&copy; 2025 Université Numérique Cheikh Hamidou KANE. All rights reserved.</p>
 </footer>

@@ -1,1 +1,24 @@
-<p>search-candidates works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Recherche de Candidats</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [(ngModel)]="searchQuery" placeholder="Rechercher par nom ou email">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="searchCandidates()">Rechercher</button>
+      <mat-table [dataSource]="filteredCandidates">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+          <mat-cell *matCellDef="let candidate"> {{candidate.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let candidate"> {{candidate.email}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+  

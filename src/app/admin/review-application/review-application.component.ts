@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApplicationService } from '../application.service';
 
 @Component({
   selector: 'app-review-application',
-  imports: [],
   templateUrl: './review-application.component.html',
-  styleUrl: './review-application.component.css'
+  styleUrls: ['./review-application.component.css']
 })
-export class ReviewApplicationComponent {
+export class ReviewApplicationComponent implements OnInit {
+  applications = [];
+  displayedColumns: string[] = ['candidateName', 'applicationDate', 'status'];
 
+  constructor(private applicationService: ApplicationService) {}
+
+  ngOnInit(): void {
+    this.loadApplications();
+  }
+
+  loadApplications(): void {
+    this.applicationService.getApplications().subscribe((applications) => {
+      this.applications = applications;
+    });
+  }
 }

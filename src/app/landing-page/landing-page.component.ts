@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +6,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent {
-  constructor(private router: Router) {}
-
   voirDetails(): void {
-    this.router.navigate(['/detail-annonce']);
+    console.log('Voir les détails de l\'annonce');
+    alert('Détails de l\'annonce affichés ici.');
+    // Implémenter la navigation ou modal pour afficher les détails.
+  }
+
+  postuler(): void {
+    console.log('Redirection vers le formulaire de candidature');
+    alert('Formulaire de candidature prêt à être rempli.');
+    // Rediriger vers la page de candidature.
   }
 }

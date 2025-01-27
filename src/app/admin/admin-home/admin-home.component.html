@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <span>Administration UN-CHK</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/manage-ads">Gérer les annonces</button>
+    <button mat-button routerLink="/candidate-list">Liste des candidats</button>
+    <button mat-button routerLink="/academic-years">Années académiques</button>
+    <button mat-button routerLink="/search-candidates">Rechercher des candidats</button>
+    <button mat-button (click)="logout()">Déconnexion</button>
+  </mat-toolbar>
+  
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  

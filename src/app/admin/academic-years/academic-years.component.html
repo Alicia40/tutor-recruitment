@@ -1,1 +1,24 @@
-<p>academic-years works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Années Académiques</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-table [dataSource]="academicYears">
+        <ng-container matColumnDef="year">
+          <mat-header-cell *matHeaderCellDef> Année </mat-header-cell>
+          <mat-cell *matCellDef="let year"> {{year.year}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="startDate">
+          <mat-header-cell *matHeaderCellDef> Date de Début </mat-header-cell>
+          <mat-cell *matCellDef="let year"> {{year.startDate | date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="endDate">
+          <mat-header-cell *matHeaderCellDef> Date de Fin </mat-header-cell>
+          <mat-cell *matCellDef="let year"> {{year.endDate | date}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+  

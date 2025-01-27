@@ -1,31 +1,26 @@
 <div class="detail-annonce">
-    <h2>Recrutement de tuteurs</h2>
-    <p><strong>Champ disciplinaire:</strong> [À préciser]</p>
-    <p><strong>Pôle/Direction:</strong> [À préciser]</p>
-    <p><strong>Niveau requis:</strong> Master2</p>
-    <p><strong>Documents:</strong></p>
-    <ul>
-      <li>Curriculum Vitae</li>
-      <li>Lettre de motivation</li>
+  <h1>{{ title }}</h1>
+  <p><strong>{{ discipline }}</strong></p>
+  <p><strong>{{ levelRequired }}</strong></p>
+  <h3>Documents requis :</h3>
+  <ul>
+    <li *ngFor="let document of requiredDocuments">{{ document }}</li>
+  </ul>
+  <h3>Description :</h3>
+  <p>{{ description }}</p>
 
-      <li>Diplôme</li>
-      <li>Autres</li>
-    </ul>
-    <p><strong>Description:</strong></p>
-    <p>
-      OBJET : appel à candidature pour lle recrutement de tuteurs
-    <p>
-      Dans le cadre de la rentrée académique 2024-2025 
-    </p>
-    <p>Les modules ouverts à candidature sont les suivants :</p>
+  <h3>Modules disponibles :</h3>
+  <div class="module" *ngFor="let module of modules">
+    <h4>{{ module.name }}</h4>
+    <p><strong>Objectif :</strong> {{ module.objective }}</p>
+    <h5>Critères de sélection :</h5>
     <ul>
-      <li>Anglais</li>
-      <li>Porjet operationel</li>
-      <li>informatique</li>
+      <li *ngFor="let requirement of module.requirements">{{ requirement }}</li>
     </ul>
-    <p>en respectant le contenu pédagogique 
-    </p>
-    <!-- Ajoutez ici les détails supplémentaires de l'annonce -->
-    <button class="btn-primary" (click)="postuler()">Postuler</button>
   </div>
-  
+
+  <p>
+    <strong>Date de clôture :</strong>
+    <span class="date-cloture">{{ closingDate }}</span>
+  </p>
+</div>

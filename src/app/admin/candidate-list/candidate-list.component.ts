@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CandidateService } from '../candidate.service';
 
 @Component({
   selector: 'app-candidate-list',
-  imports: [],
   templateUrl: './candidate-list.component.html',
-  styleUrl: './candidate-list.component.css'
+  styleUrls: ['./candidate-list.component.css']
 })
-export class CandidateListComponent {
+export class CandidateListComponent implements OnInit {
+  candidates = [];
+  displayedColumns: string[] = ['name', 'email', 'status'];
 
+  constructor(private candidateService: CandidateService) {}
+
+  ngOnInit(): void {
+    this.loadCandidates();
+  }
+
+  loadCandidates(): void {
+    this.candidateService.getCandidates().subscribe((candidates) => {
+      this.candidates = candidates;
+    });
+  }
 }

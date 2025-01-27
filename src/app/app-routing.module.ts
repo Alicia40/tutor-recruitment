@@ -6,13 +6,19 @@ import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { RecoveryComponent } from './auth/recovery/recovery.component';
 
 const routes: Routes = [
+  // Page d'accueil
   { path: '', component: LandingPageComponent },
+
+  // Routes de l'authentification
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'recovery', component: RecoveryComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
-  { path: 'candidate', loadChildren: () => import('./candidate/candidate.module').then(m => m.CandidateModule) }
 
+  // Chargement du module Admin
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+
+  // Gestion des routes inexistantes
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

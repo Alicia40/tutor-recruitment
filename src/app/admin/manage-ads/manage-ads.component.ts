@@ -1,33 +1,37 @@
-// src/app/admin/manage-ads.component.ts
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from './admin.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdService } from '../ad.service';
 
 @Component({
   selector: 'app-manage-ads',
   templateUrl: './manage-ads.component.html',
+  styleUrls: ['./manage-ads.component.css']
 })
 export class ManageAdsComponent implements OnInit {
-  ads: any[] = [];
-  
-  constructor(private adminService: AdminService) {}
+  ads = [];
+  displayedColumns: string[] = ['title', 'description', 'actions'];
 
-  ngOnInit() {
-    this.getAds();
+  constructor(private adService: AdService, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.loadAds();
   }
 
-  getAds() {
-    this.adminService.getAds().subscribe(
-      (data) => {
-        this.ads = data;
-      },
-      (error) => console.error('Error fetching ads', error)
-    );
+  loadAds(): void {
+    this.adService.getAds().subscribe((ads) => {
+      this.ads = ads;
+    });
   }
 
-  deleteAd(adId: number) {
-    this.adminService.deleteAd(adId).subscribe(
-      () => this.getAds(),
-      (error) => console.error('Error deleting ad', error)
-    );
+  openCreateDialog(): void {
+    // Logic to open dialog for creating a new ad
+  }
+
+  editAd(ad): void {
+    // Logic to edit the selected ad
+  }
+
+  deleteAd(ad): void {
+    // Logic to delete the selected ad
   }
 }
